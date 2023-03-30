@@ -5,7 +5,7 @@ use openai_flows::{chat_completion, ChatModel, ChatOptions};
 use std::env;
 
 #[no_mangle]
-pub  fn run() {
+pub fn run() {
     let guild_name: String = match env::var("channel_name") {
         Err(_) => "myserver".to_string(),
         Ok(name) => name,
@@ -25,15 +25,22 @@ pub  fn run() {
 
         if !sm.content.trim().is_empty() {
             let msg = sm.content;
-            let co = ChatOptions {
-                model: ChatModel::GPT35Turbo,
-                restart: true,
-                restarted_sentence: Some(prompt),
-            };
-            if let Some(r) =
-                chat_completion(&openai_key_name, &format!("chat_id#{}", sm.id), &msg, &co)
-            {
-                create_text_message_in_channel(&guild_name, &channel_name, r.choice, Some(sm.id));
+            if !sm.author.bot {
+                let co = ChatOptions {
+                    model: ChatModel::GPT35Turbo,
+                    restart: true,
+                    restarted_sentence: Some(prompt),
+                };
+                if let Some(r) =
+                    chat_completion(&openai_key_name, &format!("chat_id#{}", sm.id), &msg, &co)
+                {
+                    create_text_message_in_channel(
+                        &guild_name,
+                        &channel_name,
+                        r.choice,
+                        Some(sm.id),
+                    );
+                }
             }
         };
     });
