@@ -23,24 +23,17 @@ pub fn run() {
     listen_to_channel(&guild_name, &channel_name, |sm| {
         let prompt = "You are a helpful assistant answering questions on Discord. If someone greets you without asking a question, you should simply respond \"Hello, I am your assistant on Discord, built by the Second State team. I am ready for your instructions now!\"";
 
-        if !sm.content.trim().is_empty() {
+        if !sm.author.bot && !sm.content.trim().is_empty() {
             let msg = sm.content;
-            if !sm.author.bot {
-                let co = ChatOptions {
-                    model: ChatModel::GPT35Turbo,
-                    restart: true,
-                    restarted_sentence: Some(prompt),
-                };
-                if let Some(r) =
-                    chat_completion(&openai_key_name, &format!("chat_id#{}", sm.id), &msg, &co)
-                {
-                    create_text_message_in_channel(
-                        &guild_name,
-                        &channel_name,
-                        r.choice,
-                        Some(sm.id),
-                    );
-                }
+            let co = ChatOptions {
+                model: ChatModel::GPT35Turbo,
+                restart: true,
+                restarted_sentence: Some(prompt),
+            };
+            if let Some(r) =
+                chat_completion(&openai_key_name, &format!("chat_id#{}", sm.id), &msg, &co)
+            {
+                create_text_message_in_channel(&guild_name, &channel_name, r.choice, Some(sm.id));
             }
         };
     });
