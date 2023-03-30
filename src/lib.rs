@@ -5,7 +5,7 @@ use openai_flows::{chat_completion, ChatModel, ChatOptions};
 use std::env;
 
 #[no_mangle]
-pub async fn run() {
+pub  fn run() {
     let guild_name: String = match env::var("channel_name") {
         Err(_) => "myserver".to_string(),
         Ok(name) => name,
