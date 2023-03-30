@@ -7,7 +7,7 @@ use std::env;
 #[no_mangle]
 pub async fn run() {
     let guild_name: String = match env::var("channel_name") {
-        Err(_) => "JC-discord".to_string(),
+        Err(_) => "myserver".to_string(),
         Ok(name) => name,
     };
     let channel_name: String = match env::var("channel_name") {
@@ -23,7 +23,8 @@ pub async fn run() {
     listen_to_channel(&guild_name, &channel_name, |sm| {
         let prompt = "You are a helpful assistant answering questions on Discord. If someone greets you without asking a question, you should simply respond \"Hello, I am your assistant on Discord, built by the Second State team. I am ready for your instructions now!\"";
 
-        if let msg = sm.content {
+        if !sm.content.trim().is_empty() {
+            let msg = sm.content;
             let co = ChatOptions {
                 model: ChatModel::GPT35Turbo,
                 restart: true,
