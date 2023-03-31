@@ -31,7 +31,7 @@ pub fn run() {
                 restarted_sentence: Some(prompt),
             };
             if let Some(r) =
-                chat_completion(&openai_key_name, &format!("chat_id#{}", sm.author.id), &msg, &co)
+                chat_completion(&openai_key_name, &format!("chat_id#{}", sm.author.username), &msg, &co)
             {
                 create_text_message_in_channel(&guild_name, &channel_name, r.choice, Some(sm.id));
             }
