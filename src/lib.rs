@@ -27,7 +27,7 @@ pub fn run() {
             let msg = sm.content;
             let co = ChatOptions {
                 model: ChatModel::GPT35Turbo,
-                restart: true,
+                restart: false,
                 restarted_sentence: Some(prompt),
             };
             if let Some(r) =
