@@ -6,6 +6,9 @@ use std::env;
 
 #[no_mangle]
 pub fn run() {
+
+    dotenv().ok();
+    
     let guild_name: String = match env::var("server_name") {
         Err(_) => "myserver".to_string(),
         Ok(name) => name,
