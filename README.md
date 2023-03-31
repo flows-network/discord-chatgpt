@@ -1,4 +1,4 @@
-# <p align="center">A ChatGPT Discord Bot</p>
+# <p align="center">A ChatGPT Bot for your Discord server</p>
 
 
 
