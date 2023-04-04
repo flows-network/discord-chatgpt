@@ -29,7 +29,7 @@ You will need an [OpenAI API key](https://openai.com/blog/openai-api). If you do
 
 ## Deploy the ChatGPT Discord bot
 
-To install the ChatGPT Slack App, we will use [flows.network](https://flows.network/), a serverless platform that makes deploying your own app quick and easy in just three steps.
+To install the ChatGPT Discord App, we will use [flows.network](https://flows.network/), a serverless platform that makes deploying your own app quick and easy in just three steps.
 
 ### Fork this repo
 
@@ -62,7 +62,7 @@ After that, the flows.network will redirect you to the flow details page automat
 
 <img width="758" alt="image" src="https://user-images.githubusercontent.com/45785633/222973214-ecd052dc-72c2-4711-90ec-db1ec9d5f24e.png">
 
-2. Click the "Connect" button to authenticate your Slack account. You'll be redirected to a new page where you must grant [flows.network](https://flows.network/) permission to install the `flows-network-integration` bot on a Discord server. This server is the one you entered into the environment variables above.
+2. Click the "Connect" button to authenticate your Discord account. You'll be redirected to a new page where you must grant [flows.network](https://flows.network/) permission to install the `flows-network-integration` bot on a Discord server. This server is the one you entered into the environment variables above.
 
 That's all. As soon as the flow function's status becomes `ready`, the ChatGPT Discord App goes live. Go ahead and chat with ChatGPT by sending a message in the channel!
 
