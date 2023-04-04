@@ -43,7 +43,7 @@ Fork [this repo](https://github.com/flows-network/discord-chatgpt) and go to flo
 4. Authenticate the [flows.network](https://flows.network/) to access the `discord-chatgpt` repo you just forked. Don't forget to choose "With Environment Variables", which we will configure the required parameters. Once done, click on the "Next" button.
 <img width="779" alt="image" src="https://user-images.githubusercontent.com/45785633/224656121-98d146ae-8bab-40b1-a589-057a34572884.png">
 
-5. Fill in the required Environment Variables. In this example, we have three variables. One is `server_name`. Fill in the Discord server Name you want to connect here. The second one is `channel`. Fill in the Slack channel under the Discord server you just entered. The last one is `openai_key_name`. Fill in the name you want to name your OpenAI Key.
+5. Fill in the required Environment Variables. In this example, we have three variables. One is `server_name`. Fill in the Discord server Name you want to connect here. The second one is `channel_name`. Fill in the Discord channel under the Discord server you just entered. The last one is `openai_key_name`. Fill in the name you want to name your OpenAI Key.
 
 ![image](https://user-images.githubusercontent.com/45785633/229090360-b38f4ec4-6aee-4dfa-8056-dd1ead5800e3.png)
 
