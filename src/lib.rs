@@ -36,13 +36,13 @@ async fn handle<B: Bot>(bot: &B, msg: Message) {
         return;
     }
 
+    let bot_name = std::env::var("BOT_NAME").unwrap_or(String::from("Chat assistant"));
+
     _ = client
         .edit_profile(
-            serde_json::json!({
-                "username": "Chat assistant"
-            })
-            .as_object()
-            .unwrap(),
+            serde_json::json!({ "username": bot_name })
+                .as_object()
+                .unwrap(),
         )
         .await;
 
