@@ -1,40 +1,70 @@
-use discord_flows::{create_text_message_in_channel, listen_to_channel, TextMessage};
-use dotenv::dotenv;
-use flowsnet_platform_sdk::write_error_log;
-use openai_flows::{chat_completion, ChatModel, ChatOptions};
-use std::env;
+use discord_flows::{model::Message, Bot, DefaultBot};
+use flowsnet_platform_sdk::logger;
+use openai_flows::{
+    chat::{ChatModel, ChatOptions},
+    OpenAIFlows,
+};
 
 #[no_mangle]
-pub fn run() {
-    let guild_name: String = match env::var("server_name") {
-        Err(_) => "myserver".to_string(),
-        Ok(name) => name,
-    };
-    let channel_name: String = match env::var("channel_name") {
-        Err(_) => "general".to_string(),
-        Ok(name) => name,
+#[tokio::main(flavor = "current_thread")]
+pub async fn run() {
+    logger::init();
+
+    let channel_id = std::env::var("CHANNEL_ID").map(|c| c.parse().unwrap_or(0));
+
+    let channel_id = match channel_id {
+        Ok(c) if c != 0 => c,
+        _ => {
+            log::error!("channel_id not set");
+            return;
+        }
     };
 
-    let openai_key_name: String = match env::var("openai_key_name") {
-        Err(_) => "jaykchen".to_string(),
-        Ok(name) => name,
+    let bot = DefaultBot {};
+
+    bot.listen_to_channel(channel_id, |msg| handle(&bot, msg))
+        .await;
+}
+
+async fn handle<B: Bot>(bot: &B, msg: Message) {
+    let client = bot.get_client();
+    let channel_id = msg.channel_id;
+    let content = msg.content;
+
+    if msg.author.bot {
+        log::debug!("message from bot");
+        return;
+    }
+
+    _ = client
+        .edit_profile(
+            serde_json::json!({
+                "username": "Chat assistant"
+            })
+            .as_object()
+            .unwrap(),
+        )
+        .await;
+
+    let co = ChatOptions {
+        model: ChatModel::GPT35Turbo,
+        restart: false,
+        system_prompt: Some("You are a helpful assistant answering questions on Discord. If someone greets you without asking a question, you should simply respond \"Hello, I am your assistant on Discord, built by the Second State team. I am ready for your instructions now!\""),
     };
 
-    listen_to_channel(&guild_name, &channel_name, |sm| {
-        let prompt = "You are a helpful assistant answering questions on Discord. If someone greets you without asking a question, you should simply respond \"Hello, I am your assistant on Discord, built by the Second State team. I am ready for your instructions now!\"";
+    let of = OpenAIFlows::new();
 
-        if !sm.author.bot && !sm.content.trim().is_empty() {
-            let msg = sm.content;
-            let co = ChatOptions {
-                model: ChatModel::GPT35Turbo,
-                restart: false,
-                restarted_sentence: Some(prompt),
-            };
-            if let Some(r) =
-                chat_completion(&openai_key_name, &format!("chat_id#{}", sm.author.username), &msg, &co)
-            {
-                create_text_message_in_channel(&guild_name, &channel_name, r.choice, Some(sm.id));
-            }
-        };
-    });
+    if let Ok(c) = of
+        .chat_completion(&channel_id.to_string(), &content, &co)
+        .await
+    {
+        _ = client
+            .send_message(
+                channel_id.into(),
+                &serde_json::json!({
+                    "content": c.choice,
+                }),
+            )
+            .await;
+    }
 }
