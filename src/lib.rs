@@ -10,7 +10,7 @@ use openai_flows::{
 pub async fn run() {
     logger::init();
 
-    let channel_id = std::env::var("CHANNEL_ID").map(|c| c.parse().unwrap_or(0));
+    let channel_id = std::env::var("Discord_CHANNEL_ID").map(|c| c.parse().unwrap_or(0));
 
     let channel_id = match channel_id {
         Ok(c) if c != 0 => c,
