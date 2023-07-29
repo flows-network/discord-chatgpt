@@ -17,7 +17,7 @@ pub async fn run() {
 
     let discord_token = env::var("discord_token").unwrap();
     let placeholder_text = env::var("placeholder").unwrap_or("Typing ...".to_string());
-    let system_prompt = std::env::var("system_prompt").unwrap_or("You are a helpful assistant answering questions on Telegram.".to_string());
+    let system_prompt = std::env::var("system_prompt").unwrap_or("You are a helpful assistant answering questions on Discord.".to_string());
 
     let bot = ProvidedBot::new(discord_token);
     bot.listen(|msg| handler(&bot, &placeholder_text, &system_prompt, msg)).await;
