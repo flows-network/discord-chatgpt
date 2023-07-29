@@ -12,6 +12,8 @@ crate-type = ["cdylib"]
 discord-flows = "0.4"
 flowsnet-platform-sdk = "0.1"
 log = "0.4"
-openai-flows = "0.7"
+openai-flows = "0.8"
+store-flows = "0.3"
 serde_json = "1"
 tokio_wasi = { version = "1.25.0", features = ["rt", "macros"] }
+dotenv = "0.15.0"
