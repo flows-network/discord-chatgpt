@@ -28,6 +28,8 @@
 
 [**Just click here**](https://flows.network/flow/createByTemplate/discord-chatgpt)
 
+<img width="500" alt="image" src="https://github.com/flows-network/discord-chatgpt/assets/45785633/f53553da-ccec-4fa3-ada3-851d7c3b4c5e">
+
 Here you can see three variables. You can customize the `system_prompt` variable to prompt ChatGPT. 
 
 Click on the **Create and Build** button.
@@ -36,17 +38,22 @@ Click on the **Create and Build** button.
 
 You will now set up OpenAI integration. Click on **Connect**, and enter your key.
 
+[<img width="450" alt="image" src="https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png">](https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png)
+
 Close the tab and go back to the flow.network page once you are done. Click on **Continue**.
 
-### 3 Add the Telegram bot token
+### 3 Add the Discord bot token
 
-You will now set up Discord integration. Enter your Discord token here.
+You will now set up Discord integration. Enter your Discord token here. [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide).
+
+<img width="530" alt="image" src="https://github.com/flows-network/discord-chatgpt/assets/45785633/e978d2fe-5666-4862-84c6-91a87a25e929">
 
 Click on **Deploy** button.
 
 ## Give it a try. 
 
-When the status of the flow is ready and running, you can invite the Discord bot to your sever.
+When the status of the flow is ready and running, you can invite the Discord bot to your Discord server.
+
 Refer to this guide to [invite the bot to your server](https://flows.network/blog/discord-chat-bot-guide).
 
 After the bot joined your server, you can find the bot on the right contact list and DM the bot. The bot will 
