@@ -6,12 +6,12 @@
   <a href="https://twitter.com/flows_network">
     <img src="https://img.shields.io/badge/Twitter-1DA1F2?logo=twitter&amp;logoColor=white" alt="flows.network Twitter">
   </a>
-   <a href="https://flows.network/flow/createByTemplate/Discord-ChatGPT">
+   <a href="https://flows.network/flow/createByTemplate/discord-chatgpt">
     <img src="https://img.shields.io/website?up_message=deploy&url=https%3A%2F%2Fflows.network%2Fflow%2Fnew" alt="Create a flow">
   </a>
 </p>
 
-[Deploy this function on flows.network](https://flows.network/flow/createByTemplate/Discord-ChatGPT), and you will get a Discord bot that uses ChatGPT to respond to every question in your Discord DM.
+[Deploy this function on flows.network](https://flows.network/flow/createByTemplate/discord-chatgpt), and you will get a Discord bot that uses ChatGPT to respond to every question in your Discord DM.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@
 
 ### 1 Create a bot from a template
 
-[**Just click here**](https://flows.network/flow/createByTemplate/Discord-ChatGPT)
+[**Just click here**](https://flows.network/flow/createByTemplate/discord-chatgpt)
 
 Here you can see three variables. You can customize the `system_prompt` variable to prompt ChatGPT. 
 
