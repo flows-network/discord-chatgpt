@@ -34,21 +34,21 @@ Here you can see three variables. You can customize the `system_prompt` variable
 
 Click on the **Create and Build** button.
 
-### 2 Add your OpenAI API key
-
-You will now set up OpenAI integration. Click on **Connect**, and enter your key.
-
-[<img width="450" alt="image" src="https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png">](https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png)
-
-Close the tab and go back to the flow.network page once you are done. Click on **Continue**.
-
-### 3 Add the Discord bot token
+### 2 Add the Discord token
 
 You will now set up Discord integration. Enter your Discord token here. [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide).
 
 <img width="530" alt="image" src="https://github.com/flows-network/discord-chatgpt/assets/45785633/e978d2fe-5666-4862-84c6-91a87a25e929">
 
-Click on **Deploy** button.
+Click on **Continue**.
+
+### 3 Add your OpenAI API key
+
+You will now set up OpenAI integration. Click on **Connect**, and enter your key.
+
+[<img width="450" alt="image" src="https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png">](https://user-images.githubusercontent.com/45785633/226564674-902933b5-8ff3-4724-93e3-2b2f67dc0b9a.png)
+
+Close the tab and go back to the flow.network page once you are done. Click on **Deploy** button.
 
 ## Give it a try. 
 
