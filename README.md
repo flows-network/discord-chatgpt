@@ -16,7 +16,7 @@
 ## Prerequisites
 
 * You will need to bring your own [OpenAI API key](https://openai.com/blog/openai-api). If you do not already have one, [sign up here](https://platform.openai.com/signup).
-* You also need a bot token to access the Discord API. And then invite the bot to your Discord server. Now the bot is offline. But don't worry! After you finish all the steps, the bot will be online. Please refer to [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide) to save the Discord API Token and invite the bot to your server.
+* You also need a bot token to access the Discord API. Please refer to [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide) to save the Discord API Token and invite the bot to your server. You can see the bot is offline now. But don't worry! After you finish all the steps, the bot will be online. 
 
 ## Deploy your Telegram ChatGPT bot in 3 steps
 
