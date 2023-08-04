@@ -36,7 +36,7 @@ Click on the **Create and Build** button.
 
 ### 2 Add the Discord token
 
-You will now set up Discord integration. Enter your Discord token here. [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide).
+You will now set up Discord integration. Enter your Discord token here. Please refer to [How to create a Discord chat bot](https://flows.network/blog/discord-chat-bot-guide).
 
 <img width="530" alt="image" src="https://github.com/flows-network/discord-chatgpt/assets/45785633/e978d2fe-5666-4862-84c6-91a87a25e929">
 
