@@ -9,7 +9,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-discord-flows = "0.4"
+discord-flows = "0.6"
 flowsnet-platform-sdk = "0.1"
 log = "0.4"
 openai-flows = "0.8"

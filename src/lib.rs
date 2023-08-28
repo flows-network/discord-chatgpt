@@ -1,6 +1,5 @@
-use std::{env, str};
-use dotenv::dotenv;
-use discord_flows::{model::Message, Bot, ProvidedBot};
+use std::env;
+use discord_flows::{model::Message, Bot, ProvidedBot, message_handler};
 use flowsnet_platform_sdk::logger;
 use openai_flows::{
     chat::{ChatModel, ChatOptions},
@@ -11,19 +10,20 @@ use serde_json::json;
 
 #[no_mangle]
 #[tokio::main(flavor = "current_thread")]
-pub async fn run() {
-    dotenv().ok();
-    logger::init();
-
-    let discord_token = env::var("discord_token").unwrap();
-    let placeholder_text = env::var("placeholder").unwrap_or("Typing ...".to_string());
-    let system_prompt = std::env::var("system_prompt").unwrap_or("You are a helpful assistant answering questions on Discord.".to_string());
-
-    let bot = ProvidedBot::new(discord_token);
-    bot.listen(|msg| handler(&bot, &placeholder_text, &system_prompt, msg)).await;
+pub async fn on_deploy() {
+    let token = std::env::var("discord_token").unwrap();
+    let bot = ProvidedBot::new(token);
+    bot.listen_to_messages().await;
 }
 
-async fn handler(bot: &ProvidedBot, placeholder_text: &str, system_prompt: &str, msg: Message) {
+#[message_handler]
+async fn handler(msg: Message) {
+    logger::init();
+    let token = env::var("discord_token").unwrap();
+    let placeholder_text = &env::var("placeholder").unwrap_or("Typing ...".to_string());
+    let system_prompt = &env::var("system_prompt").unwrap_or("You are a helpful assistant answering questions on Discord.".to_string());
+
+    let bot = ProvidedBot::new(token);
     let discord = bot.get_client();
     if msg.author.bot {
         log::info!("ignored bot message");
@@ -31,7 +31,6 @@ async fn handler(bot: &ProvidedBot, placeholder_text: &str, system_prompt: &str,
     }
     let channel_id = msg.channel_id;
     let content = msg.content;
-
 
     if content.eq_ignore_ascii_case("/restart") {
         _ = discord.send_message(
